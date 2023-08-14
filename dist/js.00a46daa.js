@@ -118,27 +118,35 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/index.js":[function(require,module,exports) {
-var txtnombre = document.querySelector("#txtnombre");
 var respondernombre = document.querySelector("#respondenombre");
 var txtgenero = document.querySelector("#txtgenero");
 var txtedad = document.querySelector("#txtedad");
+var horaActual = new Date().getHours();
 txtnombre.addEventListener("keyup", function (event) {
   var sunombre = event.target.value;
   var genero = txtgenero.value;
   var edad = parseInt(txtedad.value);
   respondernombre.style.display = "block";
   if (!isNaN(edad)) {
+    var saludo = "";
+    if (horaActual >= 1 && horaActual < 12) {
+      saludo = "Buenos Dias, ";
+    } else if (horaActual >= 12 && horaActual < 18) {
+      saludo = "Buenas Tardes, ";
+    } else {
+      saludo = "Buenas noches, ";
+    }
     if (edad > 30) {
       if (genero === 'MASCULINO') {
-        respondernombre.innerHTML = "<p> Hola, Cómo estas Sr. <span>" + sunombre + "</span> un gusto conocerte</p>";
+        respondernombre.innerHTML = "<p> Hola, " + saludo + " Cómo estas Sr. <span>" + sunombre + "</span> un gusto conocerte</p>";
       } else {
-        respondernombre.innerHTML = "<p> Hola, Cómo estas Sra. <span>" + sunombre + "</span> un gusto conocerte</p>";
+        respondernombre.innerHTML = "<p> Hola, " + saludo + " Cómo estas Sra. <span>" + sunombre + "</span> un gusto conocerte</p>";
       }
     } else {
       if (genero === 'MASCULINO') {
-        respondernombre.innerHTML = "<p> Hola, Cómo estas Estimado. <span>" + sunombre + "</span> un gusto conocerte</p>";
+        respondernombre.innerHTML = "<p> Hola, " + saludo + " Cómo estas Estimado. <span>" + sunombre + "</span> un gusto conocerte</p>";
       } else {
-        respondernombre.innerHTML = "<p> Hola, Cómo estas Srta. <span>" + sunombre + "</span> un gusto conocerte</p>";
+        respondernombre.innerHTML = "<p> Hola, " + saludo + " Cómo estas Srta. <span>" + sunombre + "</span> un gusto conocerte</p>";
       }
     }
   }

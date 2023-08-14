@@ -121,14 +121,26 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var txtnombre = document.querySelector("#txtnombre");
 var respondernombre = document.querySelector("#respondenombre");
 var txtgenero = document.querySelector("#txtgenero");
+var txtedad = document.querySelector("#txtedad");
 txtnombre.addEventListener("keyup", function (event) {
   var sunombre = event.target.value;
   var genero = txtgenero.value;
+  var edad = parseInt(txtedad.value);
   respondernombre.style.display = "block";
-  if (genero == 'MASCULINO') {
-    respondernombre.innerHTML = "<p> Hola, Cómo esta Sr. <span>" + sunombre + "</span> un gusto conocerte</p>";
-  } else {
-    respondernombre.innerHTML = "<p> Hola, Cómo esta Sra. <span>" + sunombre + "</span> un gusto conocerte</p>";
+  if (!isNaN(edad)) {
+    if (edad > 30) {
+      if (genero === 'MASCULINO') {
+        respondernombre.innerHTML = "<p> Hola, Cómo estas Sr. <span>" + sunombre + "</span> un gusto conocerte</p>";
+      } else {
+        respondernombre.innerHTML = "<p> Hola, Cómo estas Sra. <span>" + sunombre + "</span> un gusto conocerte</p>";
+      }
+    } else {
+      if (genero === 'MASCULINO') {
+        respondernombre.innerHTML = "<p> Hola, Cómo estas Estimado. <span>" + sunombre + "</span> un gusto conocerte</p>";
+      } else {
+        respondernombre.innerHTML = "<p> Hola, Cómo estas Srta. <span>" + sunombre + "</span> un gusto conocerte</p>";
+      }
+    }
   }
   txtgenero.addEventListener('click', function () {
     txtnombre.value = "";

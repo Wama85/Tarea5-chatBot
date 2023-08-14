@@ -120,9 +120,20 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"js/index.js":[function(require,module,exports) {
 var txtnombre = document.querySelector("#txtnombre");
 var respondernombre = document.querySelector("#respondenombre");
-txtnombre.addEventListener("input", function (event) {
+var txtgenero = document.querySelector("#txtgenero");
+txtnombre.addEventListener("keyup", function (event) {
   var sunombre = event.target.value;
-  respondernombre.innerHTML = "<p> Hola, Como estas <span>" + sunombre + "</span> un gusto conocerte</p>";
+  var genero = txtgenero.value;
+  respondernombre.style.display = "block";
+  if (genero == 'MASCULINO') {
+    respondernombre.innerHTML = "<p> Hola, Cómo esta Sr. <span>" + sunombre + "</span> un gusto conocerte</p>";
+  } else {
+    respondernombre.innerHTML = "<p> Hola, Cómo esta Sra. <span>" + sunombre + "</span> un gusto conocerte</p>";
+  }
+  txtgenero.addEventListener('click', function () {
+    txtnombre.value = "";
+    respondernombre.style.display = "none";
+  });
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

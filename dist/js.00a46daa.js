@@ -118,42 +118,99 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/index.js":[function(require,module,exports) {
+var txtnombre = document.querySelector("#txtnombre");
 var respondernombre = document.querySelector("#respondenombre");
 var txtgenero = document.querySelector("#txtgenero");
+var txtgeneroIng = document.querySelector("#txtgeneroIng");
 var txtedad = document.querySelector("#txtedad");
+var txtedading = document.querySelector("#txtedading");
+var contenidoEs = document.querySelector("#contenidoespañol");
+var contenidoEn = document.querySelector("#contenidoEnglish");
+var txtidioma = document.querySelector("#txtidioma");
 var horaActual = new Date().getHours();
-txtnombre.addEventListener("keyup", function (event) {
-  var sunombre = event.target.value;
-  var genero = txtgenero.value;
-  var edad = parseInt(txtedad.value);
-  respondernombre.style.display = "block";
-  if (!isNaN(edad)) {
-    var saludo = "";
-    if (horaActual >= 1 && horaActual < 12) {
-      saludo = "Buenos Dias, ";
-    } else if (horaActual >= 12 && horaActual < 18) {
-      saludo = "Buenas Tardes, ";
-    } else {
-      saludo = "Buenas noches, ";
-    }
-    if (edad > 30) {
-      if (genero === 'MASCULINO') {
-        respondernombre.innerHTML = "<p> Hola, " + saludo + " Cómo estas Sr. <span>" + sunombre + "</span> un gusto conocerte</p>";
-      } else {
-        respondernombre.innerHTML = "<p> Hola, " + saludo + " Cómo estas Sra. <span>" + sunombre + "</span> un gusto conocerte</p>";
+contenidoEs.style.display = "none";
+contenidoEn.style.display = "none";
+txtidioma.addEventListener("click", function (event) {
+  var idioma = txtidioma.value;
+  if (idioma === "es") {
+    contenidoEs.style.display = "block";
+    contenidoEn.style.display = "none";
+
+    //el evento donde mostramos los datos en español
+    txtnombre.addEventListener("keyup", function (event) {
+      var sunombre = event.target.value;
+      var genero = txtgenero.value;
+      var edad = parseInt(txtedad.value);
+      respondernombre.style.display = "block";
+      if (!isNaN(edad)) {
+        var saludo = "";
+        if (horaActual >= 1 && horaActual < 12) {
+          saludo = "Buenos Dias, ";
+        } else if (horaActual >= 12 && horaActual < 18) {
+          saludo = "Buenas Tardes, ";
+        } else {
+          saludo = "Buenas noches, ";
+        }
+        if (edad > 30) {
+          if (genero === 'MASCULINO') {
+            respondernombre.innerHTML = "<p> Hola, " + saludo + " Como estas Sr. <span>" + sunombre + "</span> un gusto conocerte.</p>";
+          } else {
+            respondernombre.innerHTML = "<p> Hola, " + saludo + " Como estas Sra. <span>" + sunombre + "</span> un gusto conocerte.</p>";
+          }
+        } else {
+          if (genero === 'MASCULINO') {
+            respondernombre.innerHTML = "<p> Hola, " + saludo + " Como estas Estimado. <span>" + sunombre + "</span> un gusto conocerte.</p>";
+          } else {
+            respondernombre.innerHTML = "<p> Hola, " + saludo + " Como estas Srta. <span>" + sunombre + "</span> un gusto conocerte.</p>";
+          }
+        }
       }
-    } else {
-      if (genero === 'MASCULINO') {
-        respondernombre.innerHTML = "<p> Hola, " + saludo + " Cómo estas Estimado. <span>" + sunombre + "</span> un gusto conocerte</p>";
-      } else {
-        respondernombre.innerHTML = "<p> Hola, " + saludo + " Cómo estas Srta. <span>" + sunombre + "</span> un gusto conocerte</p>";
-      }
-    }
-  }
-  txtgenero.addEventListener('click', function () {
-    txtnombre.value = "";
+      txtgenero.addEventListener('click', function () {
+        txtnombre.value = "";
+        respondernombre.style.display = "none";
+      });
+    });
+  } else if (idioma === "en") {
+    var txtname = document.querySelector("#txtname");
+    contenidoEn.style.display = "block";
+    contenidoEs.style.display = "none";
     respondernombre.style.display = "none";
-  });
+    //el evento donde mostramos los datos en Ingles
+
+    txtname.addEventListener("keyup", function (event) {
+      var sunombre = event.target.value;
+      var generoing = txtgeneroIng.value;
+      var edading = parseInt(txtedading.value);
+      respondernombre.style.display = "block";
+      if (!isNaN(edading)) {
+        var saludo = "";
+        if (horaActual >= 1 && horaActual < 12) {
+          saludo = "Good morning";
+        } else if (horaActual >= 12 && horaActual < 18) {
+          saludo = "Good afternoon";
+        } else {
+          saludo = "Good night";
+        }
+        if (edading > 30) {
+          if (generoing === 'MALE') {
+            respondernombre.innerHTML = "<p> Hello, " + saludo + " How are you Mr. <span>" + sunombre + "</span> nice to meet you</p>";
+          } else {
+            respondernombre.innerHTML = "<p> Hello, " + saludo + " How are you Mrs. <span>" + sunombre + "</span> nice to meet you</p>";
+          }
+        } else {
+          if (generoing === 'MALE') {
+            respondernombre.innerHTML = "<p> Hello, " + saludo + " How are you Dear. <span>" + sunombre + "</span> nice to meet you</p>";
+          } else {
+            respondernombre.innerHTML = "<p> Hello, " + saludo + " How are you Miss. <span>" + sunombre + "</span> nice to meet you</p>";
+          }
+        }
+      }
+      txtgeneroIng.addEventListener('click', function () {
+        txtname.value = "";
+        respondernombre.style.display = "none";
+      });
+    });
+  }
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

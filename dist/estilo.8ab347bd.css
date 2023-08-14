@@ -20,5 +20,19 @@ h1{
 span{
     color: brown;
 }
+input[type=text],select,[type=number]{
+    width: 150px;
+    height: 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+input[type=number]{
+    width: 50px;
+    height: 25px;
+    border-radius: 5px;
+    font-weight: bold;
+   
+}
 
 /*# sourceMappingURL=/estilo.8ab347bd.css.map */

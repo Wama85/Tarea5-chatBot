@@ -8,27 +8,70 @@
 </head>
 <body>
     <div id="contenedor">
-        <h1>BOT</h1>
-   <div id="saludo"><p>Hola, como estas?. Bienvenido a esta conversación, espero poder responder todas tus preguntas 👋</p> </div>
-   <form id="nombre">
-    <label class="estilo-normal">¿Cual es su género?: </label>
-    <select name="select" id="txtgenero">
-       
-        <option value="MASCULINO">MASCULINO</option>
-        <option value="FEMENINO" selected>FEMENINO</option>
+      <h1>BOT</h1>
+    <form action="">
+        <label class="estilo-normal">Seleccionar Idioma</label>
+        <select name="select" id="txtidioma">
+           
+            <option value="es">Español</option>
+            <option value="en">Ingles</option>
+            
+          </select>   
+    </form>  
+<!-- Div donde irá todo en español-->
+    <div id="contenidoespañol">
 
-      </select>
+   <div id="saludo">
+    <p>Hola, como estas?. Bienvenido a esta conversación, espero poder responder todas tus preguntas 👋</p> 
+   </div>
+
+   <form id="nombre">
+       <label class="estilo-normal">¿Cual es tu género?: </label>
+       <select name="select" id="txtgenero">
+         <option value="MASCULINO">MASCULINO</option>
+         <option value="FEMENINO">FEMENINO</option>
+        
+       </select>
       <label class="estilo-normal">¿Cuantos Años Tienes?: </label>
       <input type="number" name="txtedad" id="txtedad" >
 
-    <label class="estilo-normal">¿Cual es tú nombre?: </label>
-<input type="text" name="txtnombre" id="txtnombre"  placeholder="Su nombre">
+      <label class="estilo-normal">¿Cual es tú nombre?: </label>
+      <input type="text" name="txtnombre" id="txtnombre"  placeholder="Su nombre">
 
 
    </form>
-   <div class="estilo-normal" id="respondenombre"> </div>
+
   
+   </div>
+<!-- Div donde irá todo en English-->
+<div id="contenidoEnglish">
+
+    <div id="saludo">
+     <p>Hello how are you?. Welcome to this conversation, I hope I can answer all your questions 👋</p> 
+    </div>
+ 
+    <form id="nombre">
+        <label class="estilo-normal">What is your gender?: </label>
+        <select name="select" id="txtgeneroIng">
+          <option value="MALE">MALE</option>
+          <option value="FEMALE" >FEMALE</option>
+         
+        </select>
+       <label class="estilo-normal">How old are you?: </label>
+       <input type="number" name="txtedading" id="txtedading" >
+ 
+       <label class="estilo-normal">What's your name?: </label>
+       <input type="text" name="txtname" id="txtname"  placeholder="Your Name">
+ 
+ 
+    </form>
+ 
+    
+   
+    </div>
+    <div class="estilo-normal" id="respondenombre"> </div>
+   
 </div>
-<script src="js/index.js"></script>
+<script type="module" src="js/index.js"></script>
 </body>
 </html>

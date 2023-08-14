@@ -12,3 +12,11 @@ h1{
     font-size: 24px;
     font-weight: bold;
 }
+.estilo-normal{
+    font-weight: bold;
+    font-size: 24px;
+    margin: 15px 0px 15px 0px;
+}
+span{
+    color: brown;
+}
